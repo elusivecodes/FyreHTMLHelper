@@ -3,9 +3,8 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use
-    Fyre\HTMLHelper\HtmlHelper,
-    PHPUnit\Framework\TestCase;
+use Fyre\Utility\HtmlHelper;
+use PHPUnit\Framework\TestCase;
 
 final class HtmlHelperTest extends TestCase
 {

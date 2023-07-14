@@ -1,26 +1,24 @@
 <?php
 declare(strict_types=1);
 
-namespace Fyre\HTMLHelper;
+namespace Fyre\Utility;
 
-use const
-    ENT_HTML5,
-    ENT_QUOTES,
-    ENT_SUBSTITUTE;
+use const ENT_HTML5;
+use const ENT_QUOTES;
+use const ENT_SUBSTITUTE;
 
-use function
-    array_search,
-    count,
-    htmlspecialchars,
-    is_array,
-    is_bool,
-    is_numeric,
-    is_object,
-    json_encode,
-    preg_match,
-    preg_replace,
-    strtolower,
-    uksort;
+use function array_search;
+use function count;
+use function htmlspecialchars;
+use function is_array;
+use function is_bool;
+use function is_numeric;
+use function is_object;
+use function json_encode;
+use function preg_match;
+use function preg_replace;
+use function strtolower;
+use function uksort;
 
 /**
  * HtmlHelper
@@ -28,7 +26,7 @@ use function
 class HtmlHelper
 {
 
-    protected static array $attributesOrder = [
+    protected const ATTRIBUTES_ORDER = [
         'class',
         'id',
         'name',
@@ -90,7 +88,7 @@ class HtmlHelper
             return '';
         }
 
-        uksort($attributes, fn(string $a, string $b): int => static::attributeIndex($a) - static::attributeIndex($b));
+        uksort($attributes, fn(string $a, string $b): int => static::attributeIndex($a) <=> static::attributeIndex($b));
 
         $html = '';
 
@@ -144,10 +142,10 @@ class HtmlHelper
             $attribute = substr($attribute, 0, 5);
         }
 
-        $index = array_search($attribute, static::$attributesOrder);
+        $index = array_search($attribute, static::ATTRIBUTES_ORDER);
 
         if ($index === false) {
-            return count(static::$attributesOrder);
+            return count(static::ATTRIBUTES_ORDER);
         }
 
         return $index;

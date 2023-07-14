@@ -1,6 +1,6 @@
 # FyreHTMLHelper
 
-**FyreHTMLHelper** is a free, HTML helper library for *PHP*.
+**FyreHTMLHelper** is a free, open-source HTML helper library for *PHP*.
 
 
 ## Table Of Contents
@@ -20,7 +20,7 @@ composer require fyre/htmlhelper
 In PHP:
 
 ```php
-use Fyre\HTMLHelper\HtmlHelper;
+use Fyre\Utility\HtmlHelper;
 ```
 
 
