@@ -23,7 +23,7 @@ use function uksort;
 /**
  * HtmlHelper
  */
-class HtmlHelper
+abstract class HtmlHelper
 {
 
     protected const ATTRIBUTES_ORDER = [
