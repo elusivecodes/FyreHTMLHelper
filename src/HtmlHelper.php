@@ -3,10 +3,6 @@ declare(strict_types=1);
 
 namespace Fyre\Utility;
 
-use const ENT_HTML5;
-use const ENT_QUOTES;
-use const ENT_SUBSTITUTE;
-
 use function array_search;
 use function count;
 use function htmlspecialchars;
@@ -20,12 +16,15 @@ use function preg_replace;
 use function strtolower;
 use function uksort;
 
+use const ENT_HTML5;
+use const ENT_QUOTES;
+use const ENT_SUBSTITUTE;
+
 /**
  * HtmlHelper
  */
 abstract class HtmlHelper
 {
-
     protected const ATTRIBUTES_ORDER = [
         'class',
         'id',
@@ -55,7 +54,7 @@ abstract class HtmlHelper
     {
         $attributes = [];
 
-        foreach ($options AS $key => $value) {
+        foreach ($options as $key => $value) {
             if ($value === null) {
                 continue;
             }
@@ -92,7 +91,7 @@ abstract class HtmlHelper
 
         $html = '';
 
-        foreach ($attributes AS $key => $value) {
+        foreach ($attributes as $key => $value) {
             if ($value !== null) {
                 $html .= ' '.$key.'="'.$value.'"';
             } else {
@@ -150,5 +149,4 @@ abstract class HtmlHelper
 
         return $index;
     }
-
 }
