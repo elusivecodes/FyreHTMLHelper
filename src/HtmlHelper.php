@@ -40,13 +40,14 @@ abstract class HtmlHelper
         'title',
         'alt',
         'role',
-        'aria-'
+        'aria-',
     ];
 
     protected static string $charset = 'UTF-8';
 
     /**
      * Generate an attribute string.
+     *
      * @param array $options The attributes.
      * @return string The attribute string.
      */
@@ -104,6 +105,7 @@ abstract class HtmlHelper
 
     /**
      * Escape characters in a string for use in HTML.
+     *
      * @param string $string The input string.
      * @return string The escaped string.
      */
@@ -114,6 +116,7 @@ abstract class HtmlHelper
 
     /**
      * Get the charset.
+     *
      * @return string $charset The charset.
      */
     public static function getCharset(): string
@@ -123,6 +126,7 @@ abstract class HtmlHelper
 
     /**
      * Set the charset.
+     *
      * @param string $charset The charset.
      */
     public static function setCharset(string $charset): void
@@ -132,6 +136,7 @@ abstract class HtmlHelper
 
     /**
      * Get the index for an attribute.
+     *
      * @param string $attribute The attribute name.
      * @return int The attribute index.
      */

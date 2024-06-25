@@ -8,17 +8,12 @@ use PHPUnit\Framework\TestCase;
 
 final class HtmlHelperTest extends TestCase
 {
-    protected function setUp(): void
-    {
-        HtmlHelper::setCharset('UTF-8');
-    }
-
     public function testAttributes(): void
     {
         $this->assertSame(
             ' href="#"',
             HtmlHelper::attributes([
-                'href' => '#'
+                'href' => '#',
             ])
         );
     }
@@ -28,7 +23,7 @@ final class HtmlHelperTest extends TestCase
         $this->assertSame(
             ' data-test="[1,2,3]"',
             HtmlHelper::attributes([
-                'data-test' => [1, 2, 3]
+                'data-test' => [1, 2, 3],
             ])
         );
     }
@@ -46,7 +41,7 @@ final class HtmlHelperTest extends TestCase
         $this->assertSame(
             ' data-test="&quot;value&quot;"',
             HtmlHelper::attributes([
-                'data-test' => '"value"'
+                'data-test' => '"value"',
             ])
         );
     }
@@ -56,7 +51,7 @@ final class HtmlHelperTest extends TestCase
         $this->assertSame(
             ' disabled="false"',
             HtmlHelper::attributes([
-                'disabled' => false
+                'disabled' => false,
             ])
         );
     }
@@ -66,7 +61,7 @@ final class HtmlHelperTest extends TestCase
         $this->assertSame(
             ' disabled',
             HtmlHelper::attributes([
-                'disabled'
+                'disabled',
             ])
         );
     }
@@ -77,7 +72,7 @@ final class HtmlHelperTest extends TestCase
             ' class="test" href="#"',
             HtmlHelper::attributes([
                 'href' => '#',
-                'class' => 'test'
+                'class' => 'test',
             ])
         );
     }
@@ -87,7 +82,7 @@ final class HtmlHelperTest extends TestCase
         $this->assertSame(
             ' disabled',
             HtmlHelper::attributes([
-                'disabled' => true
+                'disabled' => true,
             ])
         );
     }
@@ -116,5 +111,10 @@ final class HtmlHelperTest extends TestCase
             'ISO-8859-1',
             HtmlHelper::getCharset()
         );
+    }
+
+    protected function setUp(): void
+    {
+        HtmlHelper::setCharset('UTF-8');
     }
 }
