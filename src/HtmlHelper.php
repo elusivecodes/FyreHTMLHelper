@@ -23,7 +23,7 @@ use const ENT_SUBSTITUTE;
 /**
  * HtmlHelper
  */
-abstract class HtmlHelper
+class HtmlHelper
 {
     protected const ATTRIBUTES_ORDER = [
         'class',
@@ -43,7 +43,7 @@ abstract class HtmlHelper
         'aria-',
     ];
 
-    protected static string $charset = 'UTF-8';
+    protected string $charset = 'UTF-8';
 
     /**
      * Generate an attribute string.
@@ -51,7 +51,7 @@ abstract class HtmlHelper
      * @param array $options The attributes.
      * @return string The attribute string.
      */
-    public static function attributes(array $options = []): string
+    public function attributes(array $options = []): string
     {
         $attributes = [];
 
@@ -76,9 +76,9 @@ abstract class HtmlHelper
                 $value = $value ? null : 'false';
             } else if (is_array($value) || is_object($value)) {
                 $value = json_encode($value);
-                $value = static::escape($value);
+                $value = $this->escape($value);
             } else if ($value !== null) {
-                $value = static::escape((string) $value);
+                $value = $this->escape((string) $value);
             }
 
             $attributes[$key] = $value;
@@ -109,9 +109,9 @@ abstract class HtmlHelper
      * @param string $string The input string.
      * @return string The escaped string.
      */
-    public static function escape(string $string): string
+    public function escape(string $string): string
     {
-        return htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5, static::$charset);
+        return htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5, $this->charset);
     }
 
     /**
@@ -119,9 +119,9 @@ abstract class HtmlHelper
      *
      * @return string $charset The charset.
      */
-    public static function getCharset(): string
+    public function getCharset(): string
     {
-        return static::$charset;
+        return $this->charset;
     }
 
     /**
@@ -129,9 +129,9 @@ abstract class HtmlHelper
      *
      * @param string $charset The charset.
      */
-    public static function setCharset(string $charset): void
+    public function setCharset(string $charset): void
     {
-        static::$charset = $charset;
+        $this->charset = $charset;
     }
 
     /**

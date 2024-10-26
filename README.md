@@ -24,7 +24,14 @@ use Fyre\Utility\HtmlHelper;
 ```
 
 
-## Methods
+## HtmlHelper Creation
+
+```php
+$html = new HtmlHelper();
+```
+
+
+## HtmlHelper Methods
 
 **Attributes**
 
@@ -33,7 +40,7 @@ Generate an attribute string.
 - `$options` is an array containing the attributes.
 
 ```php
-$attributes = HtmlHelper::attributes($options);
+$attributes = $html->attributes($options);
 ```
 
 **Escape**
@@ -43,7 +50,7 @@ Escape characters in a string for use in HTML.
 - `$string` is the string to escape.
 
 ```php
-$escaped = HtmlHelper::escape($string);
+$escaped = $html->escape($string);
 ```
 
 **Get Charset**
@@ -51,7 +58,7 @@ $escaped = HtmlHelper::escape($string);
 Get the character set.
 
 ```php
-$charset = HtmlHelper::getCharset();
+$charset = $html->getCharset();
 ```
 
 **Set Charset**
@@ -61,5 +68,5 @@ Set the character set.
 - `$charset` is a string representing the character set.
 
 ```php
-HtmlHelper::setCharset($charset);
+$html->setCharset($charset);
 ```

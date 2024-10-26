@@ -8,11 +8,13 @@ use PHPUnit\Framework\TestCase;
 
 final class HtmlHelperTest extends TestCase
 {
+    protected HtmlHelper $html;
+
     public function testAttributes(): void
     {
         $this->assertSame(
             ' href="#"',
-            HtmlHelper::attributes([
+            $this->html->attributes([
                 'href' => '#',
             ])
         );
@@ -22,7 +24,7 @@ final class HtmlHelperTest extends TestCase
     {
         $this->assertSame(
             ' data-test="[1,2,3]"',
-            HtmlHelper::attributes([
+            $this->html->attributes([
                 'data-test' => [1, 2, 3],
             ])
         );
@@ -32,7 +34,7 @@ final class HtmlHelperTest extends TestCase
     {
         $this->assertSame(
             '',
-            HtmlHelper::attributes([])
+            $this->html->attributes([])
         );
     }
 
@@ -40,7 +42,7 @@ final class HtmlHelperTest extends TestCase
     {
         $this->assertSame(
             ' data-test="&quot;value&quot;"',
-            HtmlHelper::attributes([
+            $this->html->attributes([
                 'data-test' => '"value"',
             ])
         );
@@ -50,7 +52,7 @@ final class HtmlHelperTest extends TestCase
     {
         $this->assertSame(
             ' disabled="false"',
-            HtmlHelper::attributes([
+            $this->html->attributes([
                 'disabled' => false,
             ])
         );
@@ -60,7 +62,7 @@ final class HtmlHelperTest extends TestCase
     {
         $this->assertSame(
             ' disabled',
-            HtmlHelper::attributes([
+            $this->html->attributes([
                 'disabled',
             ])
         );
@@ -70,7 +72,7 @@ final class HtmlHelperTest extends TestCase
     {
         $this->assertSame(
             ' class="test" href="#"',
-            HtmlHelper::attributes([
+            $this->html->attributes([
                 'href' => '#',
                 'class' => 'test',
             ])
@@ -81,7 +83,7 @@ final class HtmlHelperTest extends TestCase
     {
         $this->assertSame(
             ' disabled',
-            HtmlHelper::attributes([
+            $this->html->attributes([
                 'disabled' => true,
             ])
         );
@@ -91,7 +93,7 @@ final class HtmlHelperTest extends TestCase
     {
         $this->assertSame(
             '&quot;',
-            HtmlHelper::escape('"')
+            $this->html->escape('"')
         );
     }
 
@@ -99,22 +101,23 @@ final class HtmlHelperTest extends TestCase
     {
         $this->assertSame(
             'UTF-8',
-            HtmlHelper::getCharset()
+            $this->html->getCharset()
         );
     }
 
     public function testSetCharset(): void
     {
-        HtmlHelper::setCharset('ISO-8859-1');
+        $this->html->setCharset('ISO-8859-1');
 
         $this->assertSame(
             'ISO-8859-1',
-            HtmlHelper::getCharset()
+            $this->html->getCharset()
         );
     }
 
     protected function setUp(): void
     {
-        HtmlHelper::setCharset('UTF-8');
+        $this->html = new HtmlHelper();
+        $this->html->setCharset('UTF-8');
     }
 }
