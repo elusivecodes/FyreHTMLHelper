@@ -5,7 +5,8 @@
 
 ## Table Of Contents
 - [Installation](#installation)
-- [Methods](#methods)
+- [HtmlHelper Creation](#htmlhelper-creation)
+- [HtmlHelper Methods](#htmlhelper-methods)
 
 
 
