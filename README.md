@@ -5,8 +5,8 @@
 
 ## Table Of Contents
 - [Installation](#installation)
-- [HtmlHelper Creation](#htmlhelper-creation)
-- [HtmlHelper Methods](#htmlhelper-methods)
+- [Basic Usage](#basic-usage)
+- [Methods](#methods)
 
 
 
@@ -25,14 +25,14 @@ use Fyre\Utility\HtmlHelper;
 ```
 
 
-## HtmlHelper Creation
+## Basic Usage
 
 ```php
 $html = new HtmlHelper();
 ```
 
 
-## HtmlHelper Methods
+## Methods
 
 **Attributes**
 
