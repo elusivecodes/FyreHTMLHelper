@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Fyre\Utility;
 
+use Fyre\Config\Config;
+
 use function array_search;
 use function count;
 use function htmlspecialchars;
@@ -44,6 +46,16 @@ class HtmlHelper
     ];
 
     protected string $charset = 'UTF-8';
+
+    /**
+     * New HtmlHelper constructor.
+     *
+     * @param Config $config The Config.
+     */
+    public function __construct(Config $config)
+    {
+        $this->charset = $config->get('App.charset', 'UTF-8');
+    }
 
     /**
      * Generate an attribute string.
@@ -128,10 +140,13 @@ class HtmlHelper
      * Set the charset.
      *
      * @param string $charset The charset.
+     * @return static The HtmlHelper.
      */
-    public function setCharset(string $charset): void
+    public function setCharset(string $charset): static
     {
         $this->charset = $charset;
+
+        return $this;
     }
 
     /**

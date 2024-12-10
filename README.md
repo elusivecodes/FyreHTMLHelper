@@ -27,8 +27,26 @@ use Fyre\Utility\HtmlHelper;
 
 ## Basic Usage
 
+- `$config` is a [*Config*](https://github.com/elusivecodes/FyreConfig).
+
 ```php
-$html = new HtmlHelper();
+$html = new HtmlHelper($config);
+```
+
+The default character set will be resolved from the "*App.charset*" key in the *Config*.
+
+**Autoloading**
+
+It is recommended to bind the *HtmlHelper* to the [*Container*](https://github.com/elusivecodes/FyreContainer) as a singleton.
+
+```php
+$container->singleton(HtmlHelper::class);
+```
+
+Any dependencies will be injected automatically when loading from the [*Container*](https://github.com/elusivecodes/FyreContainer).
+
+```php
+$html = $container->use(HtmlHelper::class);
 ```
 
 
