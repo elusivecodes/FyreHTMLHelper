@@ -77,7 +77,7 @@ class HtmlHelper
                 $value = null;
             }
 
-            $key = preg_replace('/[^\w-]/', '', $key);
+            $key = preg_replace('/[^\w\-:.@]/', '', $key);
             $key = strtolower($key);
 
             if (!$key) {
