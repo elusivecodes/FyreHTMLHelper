@@ -5,7 +5,10 @@ namespace Tests;
 
 use Fyre\Config\Config;
 use Fyre\Utility\HtmlHelper;
+use Fyre\Utility\Traits\MacroTrait;
 use PHPUnit\Framework\TestCase;
+
+use function class_uses;
 
 final class HtmlHelperTest extends TestCase
 {
@@ -103,6 +106,14 @@ final class HtmlHelperTest extends TestCase
         $this->assertSame(
             'UTF-8',
             $this->html->getCharset()
+        );
+    }
+
+    public function testMacroable(): void
+    {
+        $this->assertContains(
+            MacroTrait::class,
+            class_uses(HtmlHelper::class)
         );
     }
 

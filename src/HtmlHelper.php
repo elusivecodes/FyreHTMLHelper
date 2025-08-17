@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Fyre\Utility;
 
 use Fyre\Config\Config;
+use Fyre\Utility\Traits\MacroTrait;
 
 use function array_search;
 use function count;
@@ -27,6 +28,8 @@ use const ENT_SUBSTITUTE;
  */
 class HtmlHelper
 {
+    use MacroTrait;
+
     protected const ATTRIBUTES_ORDER = [
         'class',
         'id',
