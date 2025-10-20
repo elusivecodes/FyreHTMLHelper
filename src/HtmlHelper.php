@@ -103,7 +103,10 @@ class HtmlHelper
             return '';
         }
 
-        uksort($attributes, fn(string $a, string $b): int => static::attributeIndex($a) <=> static::attributeIndex($b));
+        uksort(
+            $attributes,
+            static fn(string $a, string $b): int => static::attributeIndex($a) <=> static::attributeIndex($b)
+        );
 
         $html = '';
 
